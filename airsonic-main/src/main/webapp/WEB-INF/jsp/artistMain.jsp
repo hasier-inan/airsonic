@@ -248,41 +248,22 @@
     </c:when>
 
     <c:otherwise>
-        <table class="music indent">
-            <c:forEach items="${model.subDirs}" var="subDir">
-                <c:if test="${not subDir.album}">
-                    <tr>
-                        <c:import url="playButtons.jsp">
-                            <c:param name="id" value="${subDir.id}"/>
-                            <c:param name="playEnabled" value="${model.user.streamRole and not model.partyModeEnabled}"/>
-                            <c:param name="addEnabled" value="${model.user.streamRole and not model.partyModeEnabled}"/>
-                            <c:param name="asTable" value="true"/>
-                        </c:import>
-                        <td class="truncate"><a href="main.view?id=${subDir.id}" title="${fn:escapeXml(subDir.name)}">${fn:escapeXml(subDir.name)}</a></td>
-                        <td class="fit rightalign detail">${subDir.year}</td>
-                    </tr>
-                </c:if>
-            </c:forEach>
-        </table>
-
         <div style="float: left;padding-top: 1.5em">
             <c:set var="albumCount" value="0"/>
             <c:forEach items="${model.subDirs}" var="subDir" varStatus="loopStatus">
-                <c:if test="${subDir.album}">
-                    <c:set var="albumCount" value="${albumCount + 1}"/>
-                    <div class="albumThumb">
-                        <c:import url="coverArt.jsp">
-                            <c:param name="albumId" value="${subDir.id}"/>
-                            <c:param name="caption1" value="${fn:escapeXml(subDir.name)}"/>
-                            <c:param name="caption2" value="${subDir.year}"/>
-                            <c:param name="captionCount" value="2"/>
-                            <c:param name="coverArtSize" value="${model.coverArtSizeMedium}"/>
-                            <c:param name="showLink" value="true"/>
-                            <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
-                            <c:param name="hideOverflow" value="true"/>
-                        </c:import>
-                    </div>
-                </c:if>
+                <c:set var="albumCount" value="${albumCount + 1}"/>
+                <div class="albumThumb">
+                    <c:import url="coverArt.jsp">
+                        <c:param name="albumId" value="${subDir.id}"/>
+                        <c:param name="caption1" value="${fn:escapeXml(subDir.name)}"/>
+                        <c:param name="caption2" value="${subDir.year}"/>
+                        <c:param name="captionCount" value="2"/>
+                        <c:param name="coverArtSize" value="${model.coverArtSizeMedium}"/>
+                        <c:param name="showLink" value="true"/>
+                        <c:param name="appearAfter" value="${loopStatus.count * 30}"/>
+                        <c:param name="hideOverflow" value="true"/>
+                    </c:import>
+                </div>
             </c:forEach>
             <c:if test="${model.thereIsMore}">
                 <input id="showAllButton" class="albumOverflowButton" type="button" value="<fmt:message key='main.showall'/>" onclick="showAllAlbums()">
