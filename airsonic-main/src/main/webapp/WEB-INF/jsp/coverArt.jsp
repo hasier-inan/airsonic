@@ -34,7 +34,7 @@ PARAMETERS
 <str:randomString count="5" type="alphabet" var="addId"/>
 
 <div class="coverart dropshadow">
-    <div style="width:${size};max-width:${size};height:${size};max-height:${size};cursor:pointer;<c:if test='${param.hideOverflow}'>overflow:hidden</c:if>;" title="${param.caption1}" id="${divId}">
+    <div class="coverart__artwork" style="width:${size};max-width:${size};height:${size};max-height:${size};cursor:pointer;<c:if test='${param.hideOverflow}'>overflow:hidden</c:if>;" title="${param.caption1}" id="${divId}">
 
         <c:if test="${not empty param.albumId}">
             <c:url value="main.view" var="targetUrl">

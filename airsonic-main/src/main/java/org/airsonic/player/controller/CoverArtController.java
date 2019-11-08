@@ -35,6 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -406,6 +407,17 @@ public class CoverArtController implements LastModified {
         }
 
         protected BufferedImage createAutoCover(int width, int height) {
+            try {
+                BufferedImage bimg = ImageIO.read(ResourceUtils.getFile("classpath:template.jpg"));
+                if (bimg == null) {
+                    throw new IOException("Empty buffered image");
+                }
+                else {
+                    return scale(bimg, width, height);
+                }
+            } catch (IOException e) {
+                LOG.error("could not find template file");
+            }
             BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics = image.createGraphics();
             AutoCover autoCover = new AutoCover(graphics, getKey(), getArtist(), getAlbum(), width, height);

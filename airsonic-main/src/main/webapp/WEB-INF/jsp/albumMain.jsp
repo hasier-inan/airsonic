@@ -331,7 +331,7 @@
                         </c:if>
 
                         <td class="truncate">
-                            <span class="songTitle" title="${fn:escapeXml(song.title)}">${fn:escapeXml(song.title)}</span>
+                            <span class="songTitle album-song-title" title="${fn:escapeXml(song.title)}" onclick="top.playQueue.onPlay(${song.id}); return false;">${fn:escapeXml(song.title)}</span>
                         </td>
 
                         <c:if test="${model.visibility.albumVisible}">

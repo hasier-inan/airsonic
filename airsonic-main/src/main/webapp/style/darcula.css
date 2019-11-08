@@ -1,0 +1,151 @@
+/*
+ * Based on "Slick" theme.
+ */
+@import "default.css";
+@import "darcula-elements.css";
+
+table {
+    color: #0e0e0e;
+}
+
+/* The primary background color. */
+.bgcolor1, table.music tr:nth-of-type(even) {
+    background-color: #0e0e0e;
+}
+
+/* The secondary background color. */
+.bgcolor2, .ruleTableHeader, .log, table.music tr:nth-of-type(odd) {
+    background-color: #1a1a1a;
+}
+
+body.bgcolor2 {
+    border-bottom: 1px solid #4f5352;
+}
+
+/* Background color for selected header, log etc. */
+.headerSelected {
+    border-bottom: 2px solid #cb463c;
+    background-color: transparent;
+    cursor: default;
+}
+
+/* The primary foreground color. */
+body {
+    color: #9e9e9e;
+}
+
+/* The secondary foreground color used for h1, details etc. */
+h1, .detail, .albumComment {
+    color: #9e9e9e;
+}
+
+/* Foreground color used for h2, bold and tr. */
+h2, b, tr {
+    color: #9e9e9e;
+}
+
+/* Link color */
+a:link, a:active, a:visited, a:link *, a:active *, a:visited * {
+    color: #9e9e9e
+}
+
+/* Link hover color */
+a:hover, a:hover * {
+    color: #cb463c;
+    text-decoration: none;
+}
+
+/* Color for warning messages. */
+.warning {
+    color: #ff4800;
+}
+
+/* Scrollbar colors (supported on IE and Opera) */
+body {
+    scrollbar-face-color: #8eacc4;
+    scrollbar-highlight-color: #67778c;
+    scrollbar-shadow-color: #8eacc4;
+    scrollbar-3dlight-color: #8eacc4;
+    scrollbar-arrow-color: #67778c;
+    scrollbar-track-color: #67778c;
+    scrollbar-darkshadow-color: #67778c;
+}
+
+.back {
+    background-image: url("../icons/default_dark/back.png");
+    background-position: 0px 3px;
+    background-repeat: no-repeat;
+    padding-left: 16px;
+    line-height: 16px;
+}
+
+.forward {
+    background-image: url("../icons/default_dark/forward.png");
+    background-position: 0px 3px;
+    background-repeat: no-repeat;
+    padding-left: 16px;
+    line-height: 16px;
+}
+
+.left-panel__letter {
+    color: #cb463c;
+}
+
+.play-panel, .left-panel--letter-index {
+    border-top: 1px solid #4f5352;
+}
+
+.search-panel-container {
+    text-align: right;
+    width: 100%;
+}
+
+.detail-block {
+    display: inline-block;
+    color: #cb463c;
+}
+
+.play-control-panel {
+    width: 100%;
+}
+
+.coverart {
+    background-color: #1a1a1a;
+    border: 1px solid #9e9e9e;
+    border-radius: 2px 2px 8px 8px;
+}
+
+.coverart__artwork{
+    border-bottom: 1px solid #9e9e9e;
+}
+
+.coverart .caption1 a:link,
+.coverart .caption1 a:visited {
+    color: #9e9e9e;
+}
+
+.coverart .caption2 {
+    color: rgba(203,70,60,.4);
+}
+
+.play-control-panel__option{
+    max-width: 4px;
+}
+
+.album-song-title{
+    cursor: pointer;
+}
+
+.album-song-title:hover{
+    color: #cb463c;
+}
+
+.recover-panel, .warning-panel, .right-panel,
+#moreActions,
+#playlistWrapper, .play-list-container,
+.admin-control,
+.refresh-container::before,
+.mainframe .detail,
+table.music .fit input[type=checkbox]{
+    display: none !important;
+}

@@ -33,7 +33,7 @@
                     <input type="checkbox" name="remember-me" id="remember" tabindex="3">
                 </div>
 
-                <a href="recover.view"><fmt:message key="login.recover"/></a>
+                <a class="recover-panel" href="recover.view"><fmt:message key="login.recover"/></a>
             </div>
 
             <c:if test="${model.logout}">
@@ -49,7 +49,7 @@
             </c:if>
 
             <c:if test="${model.insecure}">
-                <div class="loginmessagebottom">
+                <div class="warning-panel loginmessagebottom">
                     <p class="warning"><fmt:message key="login.insecure"><fmt:param value="${model.brand}"/></fmt:message></p>
                 </div>
             </c:if>

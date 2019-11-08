@@ -53,6 +53,7 @@ sonic_white "Sonic (White)" default
 
 # Themes by Jeebs (Fisher Evans)
 slick "Slick" default_dark
+darcula "Darcula" default_dark
 hicon "High Contrast" default
 hiconi "High Contrast (Inverted)" default_dark
 hitech "High-Tech" default_dark

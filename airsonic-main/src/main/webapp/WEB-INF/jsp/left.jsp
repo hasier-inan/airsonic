@@ -87,7 +87,7 @@
 </div>
 
 <div style="padding-bottom:0.5em">
-    <div class="forward">
+    <div class="refresh-container forward">
         <c:choose>
             <c:when test="${model.scanning}">
                 <a href="left.view"><fmt:message key="common.refresh"/></a>
@@ -111,7 +111,7 @@
     </c:forEach>
 </c:if>
 
-<h2 class="bgcolor1" style="padding-left: 2px"><fmt:message key="left.playlists"/></h2>
+<h2 class="bgcolor1 play-list-container" style="padding-left: 2px"><fmt:message key="left.playlists"/></h2>
 <div id="playlistWrapper" style='padding-left:2px'>
     <div id="playlists"></div>
     <div id="playlistOverflow" style="display:none"></div>
@@ -146,7 +146,7 @@
     <table class="bgcolor1" style="width:100%;padding:0;margin:1em 0 0 0;border:0">
         <tr style="padding:0;margin:0;border:0">
             <th style="text-align:left;padding:0;margin:0;border:0"><a name="${fn:escapeXml(entry.key.index)}"></a>
-                <h2 style="padding:0;margin:0;border:0">${fn:escapeXml(entry.key.index)}</h2>
+                <h2 class="left-panel__letter" style="padding:0;margin:0;border:0;">${fn:escapeXml(entry.key.index)}</h2>
             </th>
             <th style="text-align:right;">
                 <a href="#top"><img src="<spring:theme code='upImage'/>" alt="" style="height:18px;"></a>
@@ -200,8 +200,8 @@
 <div style="height:5em"></div>
 
 
-<div class="bgcolor2" style="opacity: 1.0; clear: both; position: fixed; bottom: 0; right: 0; left: 0;
-      padding: 0.25em 0.75em 0.25em 0.75em; border-top:1px solid black; max-width: 850px;">
+<div class="left-panel left-panel--letter-index bgcolor2" style="opacity: 1.0; clear: both; position: fixed; bottom: 0; right: 0; left: 0;
+      padding: 0.25em 0.75em 0.25em 0.75em; max-width: 850px;">
     <c:forEach items="${model.indexes}" var="index">
         <a href="#${index.index}">${index.index}</a>
     </c:forEach>

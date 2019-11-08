@@ -125,13 +125,13 @@
 
         <td style="padding-left:1em">
             <form method="post" action="search.view" target="main" name="searchForm">
-                <td><input required type="text" name="query" id="query" size="28" placeholder="${search}" onclick="select();"
+                <td class="search-panel-container"><input required type="text" name="query" id="query" size="28" placeholder="${search}" onclick="select();"
                            onkeyup="triggerInstantSearch();"></td>
                 <td><a href="javascript:document.searchForm.submit()"><img src="<spring:theme code='searchImage'/>" alt="${search}" title="${search}"></a></td>
             </form>
         </td>
 
-        <td style="padding-left:15pt;padding-right:5pt;vertical-align: middle;width: 100%;text-align: center">
+        <td class="admin-control" style="padding-left:15pt;padding-right:5pt;vertical-align: middle;width: 100%;text-align: right">
             <c:if test="${model.user.settingsRole}"><a href="personalSettings.view" target="main"></c:if>
             <c:choose>
                 <c:when test="${model.showAvatar}">
@@ -151,16 +151,6 @@
                 <c:out value="${model.user.username}" escapeXml="true"/>
             </div>
             <c:if test="${model.user.settingsRole}"></a></c:if>
-        </td>
-
-        <td style="padding-left:15pt;padding-right:5pt;vertical-align: right;width: 100%;text-align: center">
-            <a href="<c:url value='/logout'/>" target="_top">
-                <img src="<spring:theme code='logoutImage'/>" alt="logout" height="24">
-                <div class="detail">
-                    <fmt:message key="top.logout" var="logout"></fmt:message>
-                    <c:out value="${logout}"/>
-                </div>
-            </a>
         </td>
 
     </tr></table>

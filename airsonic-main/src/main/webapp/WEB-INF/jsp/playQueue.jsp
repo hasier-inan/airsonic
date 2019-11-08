@@ -824,7 +824,7 @@
     </c:when>
     <c:otherwise>
         <div class="bgcolor2" style="position:fixed; bottom:0; width:100%;padding-top:10px;">
-            <table style="white-space:nowrap; margin-bottom:0;">
+            <table class="play-control-panel" style="white-space:nowrap; margin-bottom:0;">
                 <tr style="white-space:nowrap;">
                     <c:if test="${model.user.settingsRole and fn:length(model.players) gt 1}">
                         <td style="padding-right: 5px"><select name="player" onchange="location='playQueue.view?player=' + options[selectedIndex].value;">
@@ -834,14 +834,16 @@
                         </select></td>
                     </c:if>
                     <c:if test="${model.player.web}">
-                        <td>
-                            <div id="player" style="width:340px; height:40px">
-                                <audio id="audioPlayer" data-mejsoptions='{"alwaysShowControls": true, "enableKeyboard": false}' width="340px" height="40px" tabindex="-1" />
+                        <td class="play-control-panel__buttons">
+                            <div id="player">
+                                <audio id="audioPlayer" data-mejsoptions='{"alwaysShowControls": true, "enableKeyboard": false}' width="100%" height="40px" tabindex="-1" />
                             </div>
                             <div id="castPlayer" style="display: none">
                                 <div style="float:left">
+                                    <img src="<spring:theme code='backImage'/>" alt="Play next" title="Play next" onclick="onPrevious()" style="cursor:pointer">
                                     <img alt="Play" id="castPlay" src="<spring:theme code='castPlayImage'/>" onclick="CastPlayer.playCast()" style="cursor:pointer">
                                     <img alt="Pause" id="castPause" src="<spring:theme code='castPauseImage'/>" onclick="CastPlayer.pauseCast()" style="cursor:pointer; display:none">
+                                    <img src="<spring:theme code='forwardImage'/>" alt="Play next" title="Play next" onclick="onNext(false)" style="cursor:pointer">
                                     <img alt="Mute on" id="castMuteOn" src="<spring:theme code='volumeImage'/>" onclick="CastPlayer.castMuteOn()" style="cursor:pointer">
                                     <img alt="Mute off" id="castMuteOff" src="<spring:theme code='muteImage'/>" onclick="CastPlayer.castMuteOff()" style="cursor:pointer; display:none">
                                 </div>
@@ -880,23 +882,14 @@
                         </td>
                     </c:if>
 
-                    <c:if test="${model.player.web}">
-                        <td><span class="header">
-                            <img src="<spring:theme code='backImage'/>" alt="Play next" title="Play next" onclick="onPrevious()" style="cursor:pointer"></span>
-                        </td>
-                        <td><span class="header">
-                            <img src="<spring:theme code='forwardImage'/>" alt="Play next" title="Play next" onclick="onNext(false)" style="cursor:pointer"></span> |
-                        </td>
-                    </c:if>
-
-                    <td style="white-space:nowrap;">
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onClear()" class="player-control">
                             <img src="<spring:theme code='clearImage'/>" alt="Clear playlist" title="Clear playlist" style="cursor:pointer; height:18px">
                         </a>
                       </span> |</td>
 
-                    <td style="white-space:nowrap;">
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onShuffle()" id="shuffleQueue" class="player-control">
                             <img src="<spring:theme code='shuffleImage'/>" alt="Shuffle" title="Shuffle" style="cursor:pointer; height:18px">
@@ -904,7 +897,7 @@
                       </span> |</td>
 
                     <c:if test="${model.player.web or model.player.jukebox or model.player.external}">
-                        <td style="white-space:nowrap;">
+                        <td style="white-space:nowrap;" class="play-control-panel__option">
                           <span class="header">
                             <a href="javascript:onToggleRepeat()" id="repeatQueue" class="player-control">
                               <img id="toggleRepeat" src="<spring:theme code='repeatOn'/>" alt="Toggle repeat" title="Toggle repeat" style="cursor:pointer; height:18px">
@@ -912,7 +905,7 @@
                           </span> |</td>
                     </c:if>
 
-                    <td style="white-space:nowrap;">
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onUndo()" id="undoQueue" class="player-control">
                           <img src="<spring:theme code='undoImage'/>" alt="Undo" title="Undo" style="cursor:pointer; height:18px">
@@ -920,7 +913,7 @@
                       </span>  |</td>
 
                     <c:if test="${model.user.settingsRole}">
-                        <td style="white-space:nowrap;">
+                        <td style="white-space:nowrap;" class="play-control-panel__option">
                           <span class="header">
                             <a href="playerSettings.view?id=${model.player.id}" target="main" class="player-control">
                               <img src="<spring:theme code='settingsImage'/>" alt="Settings" title="Settings" style="cursor:pointer; height:18px">

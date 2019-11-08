@@ -24,7 +24,18 @@
 </c:import>
 
 <fmt:message key="personalsettings.title" var="title"><fmt:param>${command.user.username}</fmt:param></fmt:message>
-<h2>${fn:escapeXml(title)}</h2>
+<h2>
+    <span>${fn:escapeXml(title)}</span>
+    <span style="padding-left:15pt;">
+        <a href="<c:url value='/logout'/>" target="_top">
+            <img src="<spring:theme code='logoutImage'/>" alt="logout" height="24">
+            <div class="detail-block">
+                <fmt:message key="top.logout" var="logout"></fmt:message>
+                <c:out value="${logout}"/>
+            </div>
+        </a>
+    </span>
+</h2>
 
 <fmt:message key="common.default" var="defaultTitle"/>
 <form:form method="post" action="personalSettings.view" modelAttribute="command">
