@@ -884,6 +884,20 @@
 
                     <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
+                        <a href="javascript:onPrevious()" class="player-control">
+                            <img src="<spring:theme code='backImage'/>" alt="Previous track" title="Previous track" style="cursor:pointer; height:18px">
+                        </a>
+                      </span> |</td>
+
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
+                      <span class="header">
+                        <a href="javascript:onNext()" class="player-control">
+                            <img src="<spring:theme code='forwardImage'/>" alt="Next track" title="Next track" style="cursor:pointer; height:18px">
+                        </a>
+                      </span> |</td>
+
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
+                      <span class="header">
                         <a href="javascript:onClear()" class="player-control">
                             <img src="<spring:theme code='clearImage'/>" alt="Clear playlist" title="Clear playlist" style="cursor:pointer; height:18px">
                         </a>
@@ -918,7 +932,7 @@
                             <a href="playerSettings.view?id=${model.player.id}" target="main" class="player-control">
                               <img src="<spring:theme code='settingsImage'/>" alt="Settings" title="Settings" style="cursor:pointer; height:18px">
                             </a>
-                          </span> |</td>
+                          </span></td>
                     </c:if>
 
                     <td style="white-space:nowrap;"><select id="moreActions" onchange="actionSelected(this.options[selectedIndex].id)">
