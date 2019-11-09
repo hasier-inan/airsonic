@@ -60,17 +60,6 @@ a:hover, a:hover * {
     color: #ff4800;
 }
 
-/* Scrollbar colors (supported on IE and Opera) */
-body {
-    scrollbar-face-color: #8eacc4;
-    scrollbar-highlight-color: #67778c;
-    scrollbar-shadow-color: #8eacc4;
-    scrollbar-3dlight-color: #8eacc4;
-    scrollbar-arrow-color: #67778c;
-    scrollbar-track-color: #67778c;
-    scrollbar-darkshadow-color: #67778c;
-}
-
 .back {
     background-image: url("../icons/default_dark/back.png");
     background-position: 0px 3px;
