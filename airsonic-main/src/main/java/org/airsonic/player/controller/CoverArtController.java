@@ -21,8 +21,19 @@ package org.airsonic.player.controller;
 
 import org.airsonic.player.dao.AlbumDao;
 import org.airsonic.player.dao.ArtistDao;
-import org.airsonic.player.domain.*;
-import org.airsonic.player.service.*;
+import org.airsonic.player.domain.Album;
+import org.airsonic.player.domain.Artist;
+import org.airsonic.player.domain.CoverArtScheme;
+import org.airsonic.player.domain.MediaFile;
+import org.airsonic.player.domain.Playlist;
+import org.airsonic.player.domain.PodcastChannel;
+import org.airsonic.player.domain.Transcoding;
+import org.airsonic.player.domain.VideoTranscodingSettings;
+import org.airsonic.player.service.MediaFileService;
+import org.airsonic.player.service.PlaylistService;
+import org.airsonic.player.service.PodcastService;
+import org.airsonic.player.service.SettingsService;
+import org.airsonic.player.service.TranscodingService;
 import org.airsonic.player.service.metadata.JaudiotaggerParser;
 import org.airsonic.player.util.FileUtil;
 import org.airsonic.player.util.StringUtil;
@@ -35,7 +46,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,10 +55,15 @@ import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -408,7 +423,7 @@ public class CoverArtController implements LastModified {
 
         protected BufferedImage createAutoCover(int width, int height) {
             try {
-                BufferedImage bimg = ImageIO.read(ResourceUtils.getFile("classpath:template.jpg"));
+                BufferedImage bimg = ImageIO.read(getClass().getResourceAsStream("template.jpg"));
                 if (bimg == null) {
                     throw new IOException("Empty buffered image");
                 }

@@ -10,7 +10,7 @@
     </script>
 
 </head>
-<body style="min-width:550px" class="mainframe bgcolor1">
+<body style="min-width:550px" class="login-container mainframe bgcolor1">
 
     <form action="<c:url value='/login'/>" method="POST">
         <sec:csrfInput />

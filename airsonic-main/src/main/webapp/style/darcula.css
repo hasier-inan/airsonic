@@ -30,6 +30,10 @@ body.bgcolor2 {
 }
 
 /* The primary foreground color. */
+html, body.login-container{
+    background-color: #1a1a1a;
+}
+
 body {
     color: #9e9e9e;
 }
@@ -129,12 +133,26 @@ a:hover, a:hover * {
     color: #cb463c;
 }
 
+.ui-sortable-handle .playlist-current-image{
+    width: 24px;
+    height: 20px;
+    background: url("/icons/darcula/current.gif") no-repeat;
+    background-size: contain;
+    vertical-align: text-bottom;
+}
+
+.ui-sortable-handle:nth-child(even) .playlist-current-image{
+    background: url("/icons/darcula/current2.gif") no-repeat;
+    background-size: contain;
+}
+
 .recover-panel, .warning-panel, .right-panel,
 #moreActions,
 #playlistWrapper, .play-list-container,
 .admin-control,
 .refresh-container::before,
 .mainframe .detail,
+.player-selection-dropdown,
 table.music .fit input[type=checkbox]{
     display: none !important;
 }

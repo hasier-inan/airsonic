@@ -559,7 +559,7 @@
             }
 
             if ($("#currentImage" + id) && song.streamUrl == currentStreamUrl) {
-                $("#currentImage" + id).show();
+                $("#currentImage" + id).css({'display':'inline-block'});
                 if (isJavaJukeboxPresent()) {
                     updateJavaJukeboxPlayerControlBar(song);
                 }
@@ -742,7 +742,7 @@
 
             if (image) {
                 if (song.streamUrl == currentStreamUrl) {
-                    image.show();
+                    image.css({'display':'inline-block'});
                 } else {
                     image.hide();
                 }
@@ -827,7 +827,7 @@
             <table class="play-control-panel" style="white-space:nowrap; margin-bottom:0;">
                 <tr style="white-space:nowrap;">
                     <c:if test="${model.user.settingsRole and fn:length(model.players) gt 1}">
-                        <td style="padding-right: 5px"><select name="player" onchange="location='playQueue.view?player=' + options[selectedIndex].value;">
+                        <td class="player-selection-dropdown" style="padding-right: 5px"><select name="player" onchange="location='playQueue.view?player=' + options[selectedIndex].value;">
                             <c:forEach items="${model.players}" var="player">
                                 <option ${player.id eq model.player.id ? "selected" : ""} value="${player.id}">${player.shortDescription}</option>
                             </c:forEach>
@@ -990,7 +990,7 @@
             </c:if>
 
             <td class="truncate">
-                <img id="currentImage" src="<spring:theme code='currentImage'/>" alt="" style="display:none;padding-right: 0.5em">
+                <div id="currentImage" class="playlist-current-image" style="display:none"></div>
                 <c:choose>
                     <c:when test="${model.player.externalWithPlaylist}">
                         <span id="title" class="songTitle">Title</span>
