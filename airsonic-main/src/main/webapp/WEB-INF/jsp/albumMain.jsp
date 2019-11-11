@@ -323,71 +323,41 @@
 
                         <td class="fit"><input type="checkbox" id="songIndex${loopStatus.count - 1}">
                             <span id="songId${loopStatus.count - 1}" style="display: none">${song.id}</span></td>
-
-                        <c:if test="${model.visibility.trackNumberVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">${song.trackNumber}</span>
-                            </td>
-                        </c:if>
-
+                         <td class="fit rightalign">
+                            <span class="detail">${song.trackNumber}</span>
+                        </td>
                         <td class="truncate">
                             <span class="songTitle album-song-title" title="${fn:escapeXml(song.title)}" onclick="top.playQueue.onPlay(${song.id}); return false;">${fn:escapeXml(song.title)}</span>
                         </td>
 
-                        <c:if test="${model.visibility.albumVisible}">
-                            <td class="truncate">
-                                <span class="detail" title="${fn:escapeXml(song.albumName)}">${fn:escapeXml(song.albumName)}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.artistVisible}">
-                            <td class="truncate">
-                                <span class="detail" title="${fn:escapeXml(song.artist)}">${fn:escapeXml(song.artist)}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.genreVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">${fn:escapeXml(song.genre)}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.yearVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">${song.year}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.formatVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">${fn:toLowerCase(song.format)}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.fileSizeVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail"><sub:formatBytes bytes="${song.fileSize}"/></span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.durationVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">${song.durationString}</span>
-                            </td>
-                        </c:if>
-
-                        <c:if test="${model.visibility.bitRateVisible}">
-                            <td class="fit rightalign">
-                                <span class="detail">
-                                    <c:if test="${not empty song.bitRate}">
-                                        ${song.bitRate} Kbps ${song.variableBitRate ? "vbr" : ""}
-                                    </c:if>
-                                    <c:if test="${song.video and not empty song.width and not empty song.height}">
-                                        (${song.width}x${song.height})
-                                    </c:if>
-                                </span>
-                            </td>
-                        </c:if>
+                        <td class="truncate">
+                            <span class="forced-detail detail" title="${fn:escapeXml(song.artist)}">${fn:escapeXml(song.artist)}</span>
+                        </td>
+                        <td class="truncate">
+                            <span class="forced-detail detail" title="${fn:escapeXml(song.albumName)}">${fn:escapeXml(song.albumName)}</span>
+                        </td>
+                        <td class="fit rightalign">
+                            <span class="forced-detail detail">${song.year}</span>
+                        </td>
+                        <td class="fit rightalign">
+                            <span class="forced-detail detail">${song.durationString}</span>
+                        </td>
+                        <td class="fit rightalign">
+                            <span class="forced-detail detail"><sub:formatBytes bytes="${song.fileSize}"/></span>
+                        </td>
+                        <td class="fit rightalign">
+                            <span class="forced-detail detail">${fn:toLowerCase(song.format)}</span>
+                        </td>
+                        <td class="fit rightalign">
+                            <span class="forced-detail detail">
+                                <c:if test="${not empty song.bitRate}">
+                                    ${song.bitRate} Kbps ${song.variableBitRate ? "vbr" : ""}
+                                </c:if>
+                                <c:if test="${song.video and not empty song.width and not empty song.height}">
+                                    (${song.width}x${song.height})
+                                </c:if>
+                            </span>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

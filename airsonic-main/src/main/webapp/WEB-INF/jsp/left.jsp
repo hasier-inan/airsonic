@@ -186,7 +186,7 @@
 </c:forEach>
 
 <c:if test="${model.statistics.songCount gt 0}">
-    <div class="detail" style="padding-top: 0.6em; padding-left: 2px">
+    <div class="collection-stats detail" style="padding-top: 0.6em; padding-left: 2px">
         <fmt:message key="left.statistics">
             <fmt:param value="${model.statistics.artistCount}"/>
             <fmt:param value="${model.statistics.albumCount}"/>

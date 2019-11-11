@@ -80,7 +80,7 @@ a:hover, a:hover * {
     line-height: 16px;
 }
 
-.left-panel__letter {
+.left-panel__letter, .collection-stats {
     color: #cb463c;
 }
 
@@ -133,6 +133,11 @@ a:hover, a:hover * {
     color: #cb463c;
 }
 
+.forced-detail{
+    display: block !important;
+    color: rgba(158, 158, 158, .6);
+}
+
 .ui-sortable-handle .playlist-current-image{
     width: 24px;
     height: 20px;
@@ -151,7 +156,7 @@ a:hover, a:hover * {
 #playlistWrapper, .play-list-container,
 .admin-control,
 .refresh-container::before,
-.mainframe .detail,
+.mainframe .detail:not(.forced-detail),
 .player-selection-dropdown,
 table.music .fit input[type=checkbox]{
     display: none !important;

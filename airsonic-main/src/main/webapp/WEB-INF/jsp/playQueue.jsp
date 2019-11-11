@@ -1013,14 +1013,14 @@
             <c:if test="${model.visibility.yearVisible}">
                 <td class="fit rightalign"><span id="year" class="detail">Year</span></td>
             </c:if>
-            <c:if test="${model.visibility.formatVisible}">
-                <td class="fit rightalign"><span id="format" class="detail">Format</span></td>
-            </c:if>
-            <c:if test="${model.visibility.fileSizeVisible}">
-                <td class="fit rightalign"><span id="fileSize" class="detail">Format</span></td>
-            </c:if>
             <c:if test="${model.visibility.durationVisible}">
                 <td class="fit rightalign"><span id="duration" class="detail">Duration</span></td>
+            </c:if>
+            <c:if test="${model.visibility.fileSizeVisible}">
+                <td class="fit rightalign"><span id="fileSize" class="detail">Size</span></td>
+            </c:if>
+            <c:if test="${model.visibility.formatVisible}">
+                <td class="fit rightalign"><span id="format" class="detail">Format</span></td>
             </c:if>
             <c:if test="${model.visibility.bitRateVisible}">
                 <td class="fit rightalign"><span id="bitRate" class="detail">Bit Rate</span></td>
