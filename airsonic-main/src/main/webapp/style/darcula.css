@@ -64,6 +64,11 @@ a:hover, a:hover * {
     color: #ff4800;
 }
 
+.top-logo{
+    margin-top: -5px;
+    width:165px
+}
+
 .back {
     background-image: url("../icons/default_dark/back.png");
     background-position: 0px 3px;

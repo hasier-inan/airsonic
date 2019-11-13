@@ -80,13 +80,14 @@
 
 <table style="margin:0;padding-top:5px">
     <tr>
-        <td style="padding-right:4.5em;">
+        <td style="padding-right:1.5em;">
             <img id="show-left-frame" src="<spring:theme code='sidebarImage'/>" onclick="showLeftFrame()" alt="" style="display:${model.showSideBar ? 'none' : 'inline'};cursor:pointer">
             <img id="hide-left-frame" src="<spring:theme code='sidebarImage'/>" onclick="hideLeftFrame()" alt="" style="display:${model.showSideBar ? 'inline' : 'none'};cursor:pointer">
         </td>
         <td style="min-width:3em;padding-right:1em;text-align: center">
-            <a href="home.view?" target="main"><img src="<spring:theme code='homeImage'/>" title="${home}" alt="${home}"></a>
-            <div class="topHeader"><a href="home.view?" target="main">${home}</a></div>
+            <a href="home.view" target="main">
+                <img class="top-logo" src="<spring:theme code='logoImage'/>" title="<fmt:message key='top.home'/>" alt="">
+            </a>
         </td>
         <td style="min-width:3em;padding-right:1em;text-align: center">
             <a href="nowPlaying.view?" target="main"><img src="<spring:theme code='nowPlayingImage'/>" title="${nowPlaying}" alt="${nowPlaying}"></a>
