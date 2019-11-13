@@ -8,7 +8,7 @@
 
 <h1 style="padding-bottom: 1em">
     <img src="<spring:theme code='playlistImage'/>" alt="">
-    <span style="vertical-align: middle"><fmt:message key="left.playlists"/></span>
+    <span class="selected-text" style="vertical-align: middle"><fmt:message key="left.playlists"/></span>
 </h1>
 
 <c:if test="${empty model.playlists}">

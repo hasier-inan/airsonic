@@ -27,7 +27,7 @@
 
 <h1 style="padding-bottom: 1em">
     <img src="<spring:theme code='podcastLargeImage'/>" alt="">
-    <span style="vertical-align: middle"><fmt:message key="podcastreceiver.title"/></span>
+    <span class="selected-text" style="vertical-align: middle"><fmt:message key="podcastreceiver.title"/></span>
 </h1>
 
 <c:if test="${empty model.channels}">

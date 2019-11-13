@@ -80,19 +80,6 @@
     </c:forEach>
 </div>
 
-<div style="padding-bottom:0.5em">
-    <div class="refresh-container forward">
-        <c:choose>
-            <c:when test="${model.scanning}">
-                <a href="left.view"><fmt:message key="common.refresh"/></a>
-            </c:when>
-            <c:otherwise>
-                <a href="left.view?refresh=true"><fmt:message key="common.refresh"/></a>
-            </c:otherwise>
-        </c:choose>
-    </div>
-</div>
-
 <c:if test="${not empty model.shortcuts}">
     <h2 class="bgcolor1" style="padding-left: 2px"><fmt:message key="left.shortcut"/></h2>
     <c:forEach items="${model.shortcuts}" var="shortcut">
@@ -190,6 +177,18 @@
         </fmt:message>
     </div>
 </c:if>
+<div style="margin-top: 0.5em;padding-bottom:0.5em">
+    <div class="refresh-container forward">
+        <c:choose>
+            <c:when test="${model.scanning}">
+                <a href="left.view"><fmt:message key="common.refresh"/></a>
+            </c:when>
+            <c:otherwise>
+                <a href="left.view?refresh=true"><fmt:message key="common.refresh"/></a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</div>
 
 <div style="height:5em"></div>
 

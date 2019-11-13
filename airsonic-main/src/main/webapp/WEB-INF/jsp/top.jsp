@@ -74,8 +74,6 @@
 <fmt:message key="top.settings" var="settings"/>
 <fmt:message key="top.status" var="status" />
 <fmt:message key="top.podcast" var="podcast"/>
-<fmt:message key="top.more" var="more"/>
-<fmt:message key="top.help" var="help"/>
 <fmt:message key="top.search" var="search"/>
 
 <table style="margin:0;padding-top:5px">
@@ -115,15 +113,6 @@
             <a href="status.view?" target="main"><img src="<spring:theme code='statusImage'/>" title="${status}" alt="${status}"></a>
             <div class="topHeader"><a href="status.view?" target="main">${status}</a></div>
         </td>
-        <td style="min-width:3em;padding-right:1em;text-align: center">
-            <a href="more.view?" target="main"><img src="<spring:theme code='moreImage'/>" title="${more}" alt="${more}"></a>
-            <div class="topHeader"><a href="more.view?" target="main">${more}</a></div>
-        </td>
-        <td style="min-width:3em;padding-right:1em;text-align: center">
-            <a href="help.view?" target="main"><img src="<spring:theme code='helpImage'/>" title="${help}" alt="${help}"></a>
-            <div class="topHeader"><a href="help.view?" target="main">${help}</a></div>
-        </td>
-
         <td style="padding-left:1em">
             <form method="post" action="search.view" target="main" name="searchForm">
                 <td class="search-panel-container"><input required type="text" name="query" id="query" size="28" placeholder="${search}" onclick="select();"
