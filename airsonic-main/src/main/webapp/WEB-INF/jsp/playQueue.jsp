@@ -887,28 +887,32 @@
                         <a href="javascript:onPrevious()" class="player-control">
                             <img src="<spring:theme code='backImage'/>" alt="Previous track" title="Previous track" style="cursor:pointer; height:18px">
                         </a>
-                      </span> |</td>
+                      </span>
+                    </td>
 
                     <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onNext()" class="player-control">
                             <img src="<spring:theme code='forwardImage'/>" alt="Next track" title="Next track" style="cursor:pointer; height:18px">
                         </a>
-                      </span> |</td>
+                      </span>
+                    </td>
 
                     <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onClear()" class="player-control">
                             <img src="<spring:theme code='clearImage'/>" alt="Clear playlist" title="Clear playlist" style="cursor:pointer; height:18px">
                         </a>
-                      </span> |</td>
+                      </span>
+                    </td>
 
                     <td style="white-space:nowrap;" class="play-control-panel__option">
                       <span class="header">
                         <a href="javascript:onShuffle()" id="shuffleQueue" class="player-control">
                             <img src="<spring:theme code='shuffleImage'/>" alt="Shuffle" title="Shuffle" style="cursor:pointer; height:18px">
                         </a>
-                      </span> |</td>
+                      </span>
+                    </td>
 
                     <c:if test="${model.player.web or model.player.jukebox or model.player.external}">
                         <td style="white-space:nowrap;" class="play-control-panel__option">
@@ -916,7 +920,8 @@
                             <a href="javascript:onToggleRepeat()" id="repeatQueue" class="player-control">
                               <img id="toggleRepeat" src="<spring:theme code='repeatOn'/>" alt="Toggle repeat" title="Toggle repeat" style="cursor:pointer; height:18px">
                             </a>
-                          </span> |</td>
+                          </span>
+                        </td>
                     </c:if>
 
                     <td style="white-space:nowrap;" class="play-control-panel__option">
@@ -924,7 +929,8 @@
                         <a href="javascript:onUndo()" id="undoQueue" class="player-control">
                           <img src="<spring:theme code='undoImage'/>" alt="Undo" title="Undo" style="cursor:pointer; height:18px">
                         </a>
-                      </span>  |</td>
+                      </span>
+                    </td>
 
                     <c:if test="${model.user.settingsRole}">
                         <td style="white-space:nowrap;" class="play-control-panel__option">
