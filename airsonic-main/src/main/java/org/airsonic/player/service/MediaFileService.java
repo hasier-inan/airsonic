@@ -19,6 +19,7 @@
  */
 package org.airsonic.player.service;
 
+import javafx.util.Pair;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 import org.airsonic.player.dao.AlbumDao;
@@ -39,6 +40,9 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.regex.Pattern;
+
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 /**
  * Provides services for instantiating and caching media files and cover art.
@@ -612,12 +616,17 @@ public class MediaFileService {
      * Finds a cover art image for the given directory, by looking for it on the disk.
      */
     private File findCoverArt(File[] candidates) {
-        for (String mask : settingsService.getCoverArtFileTypesAsArray()) {
-            for (File candidate : candidates) {
-                if (candidate.isFile() && candidate.getName().toUpperCase().endsWith(mask.toUpperCase()) && !candidate.getName().startsWith(".")) {
-                    return candidate;
+        Pair<File, Boolean> imageFoundPair = null;
+        for (File candidate : candidates) {
+            if (candidate.isFile() && !candidate.getName().startsWith(".")) {
+                imageFoundPair = findCoverArtCandidate(candidate);
+                if(imageFoundPair.getValue()){
+                    return imageFoundPair.getKey();
                 }
             }
+        }
+        if(!isEmpty(imageFoundPair.getKey())){
+            return imageFoundPair.getKey();
         }
 
         // Look for embedded images in audiofiles. (Only check first audio file encountered).
@@ -631,6 +640,34 @@ public class MediaFileService {
             }
         }
         return null;
+    }
+
+    private Pair findCoverArtCandidate(File candidate) {
+        File imageFound = null;
+        for (String imageFileType : settingsService.getCoverArtFileTypesAsArray()) {
+            if(candidate.getName().toUpperCase().endsWith(imageFileType.toUpperCase())){
+                imageFound = candidate;
+                if(matchesCoverName(candidate.getName())){
+                    return new Pair<>(candidate, true);
+                }
+            }
+        }
+        return new Pair<>(imageFound, false);
+    }
+
+    /**
+     * Checks the file with a regular expression that matches at least partially its name
+     * @param candidate file name to be analyzed
+     * @return true if it is a front cover
+     */
+    private boolean matchesCoverName(String candidate) {
+        for(String nameKey : settingsService.getCoverArtFileNames()){
+            if(Pattern.compile(String.format(".*%s.*", nameKey.toUpperCase()))
+                    .matcher(candidate.toUpperCase()).matches()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setSecurityService(SecurityService securityService) {

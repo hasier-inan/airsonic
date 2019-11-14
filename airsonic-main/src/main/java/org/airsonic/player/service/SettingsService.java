@@ -139,7 +139,8 @@ public class SettingsService {
     private static final String DEFAULT_PLAYLIST_FOLDER = Util.getDefaultPlaylistFolder();
     private static final String DEFAULT_MUSIC_FILE_TYPES = "mp3 ogg oga aac m4a m4b flac wav wma aif aiff ape mpc shn mka opus";
     private static final String DEFAULT_VIDEO_FILE_TYPES = "flv avi mpg mpeg mp4 m4v mkv mov wmv ogv divx m2ts webm";
-    private static final String DEFAULT_COVER_ART_FILE_TYPES = "cover.jpg Cover.jpg cover.png cover.gif folder.jpg Folder.jpg front.jpg Front.jpg jpg jpeg gif png";
+    private static final String[] DEFAULT_COVER_ART_FILE_NAMES = new String[]{"cover", "folder", "front"};
+    private static final String DEFAULT_COVER_ART_FILE_TYPES = "jpg jpeg gif png";
     private static final int DEFAULT_COVER_ART_CONCURRENCY = 4;
     private static final String DEFAULT_WELCOME_TITLE = "Welcome to Airsonic!";
     private static final String DEFAULT_WELCOME_SUBTITLE = null;
@@ -448,6 +449,10 @@ public class SettingsService {
 
     public synchronized String getCoverArtFileTypes() {
         return getProperty(KEY_COVER_ART_FILE_TYPES, DEFAULT_COVER_ART_FILE_TYPES);
+    }
+
+    public synchronized String[] getCoverArtFileNames() {
+        return DEFAULT_COVER_ART_FILE_NAMES;
     }
 
     public synchronized void setCoverArtFileTypes(String fileTypes) {
