@@ -741,8 +741,10 @@
             var image = $("#currentImage" + id);
 
             if (image) {
+                image.parent().parent().find("a,span").removeClass("currently-playing");
                 if (song.streamUrl == currentStreamUrl) {
                     image.css({'display':'inline-block'});
+                    image.parent().parent().find("a,span").addClass("currently-playing");
                 } else {
                     image.hide();
                 }
@@ -980,7 +982,7 @@
 <div style="clear:both"></div>
 <p id="empty"><em><fmt:message key="playlist.empty"/></em></p>
 
-<table class="music indent" style="cursor:pointer">
+<table class="playlist-table music indent" style="cursor:pointer">
     <tbody id="playlistBody">
         <tr id="pattern" style="display:none;margin:0;padding:0;border:0">
             <td class="fit">
@@ -989,7 +991,6 @@
             <td class="fit">
                 <img id="removeSong" onclick="onRemove(this.id.substring(10) - 1)" src="<spring:theme code='removeImage'/>"
                      style="cursor:pointer; height:18px;" alt="<fmt:message key='playlist.remove'/>" title="<fmt:message key='playlist.remove'/>"></td>
-            <td class="fit"><input type="checkbox" class="checkbox" id="songIndex"></td>
 
             <c:if test="${model.visibility.trackNumberVisible}">
                 <td class="fit rightalign"><span class="detail" id="trackNumber">1</span></td>
@@ -1049,6 +1050,5 @@
         }
     };
 </script>
-<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 
 </body></html>

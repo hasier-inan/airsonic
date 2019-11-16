@@ -96,6 +96,16 @@ a:hover, a:hover * {
     color: #cb463c;
 }
 
+#playlistBody td a,
+#playlistBody td span {
+    font-style: normal;
+}
+.currently-playing{
+    font-style: italic !important;
+    font-weight: bold;
+    opacity: 1;
+}
+
 .play-panel, .left-panel--letter-index {
     border-top: 1px solid #4f5352;
 }
