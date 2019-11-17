@@ -96,6 +96,30 @@ a:hover, a:hover * {
     color: #cb463c;
 }
 
+.playlist-table{
+    width: 75% !important;
+}
+
+.record-player{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    z-index: 0;
+}
+#turntableImage{
+    width: 97%;
+    max-height: 75%;
+    border: 2px solid #9e9e9e;
+    border-radius: 8px;
+    margin-top: 5em;
+}
+
+.playlistframe{
+    height: 550px;
+}
+
 #playlistBody td a,
 #playlistBody td span {
     font-style: normal;

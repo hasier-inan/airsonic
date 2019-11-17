@@ -681,6 +681,7 @@
     function skip(index, position) {
         if (index < 0 || index >= songs.length) {
             return;
+            $("#turntableImage").attr("xlink:href", "icons/darcula/turntable_mat.jpg");
         }
 
         var song = songs[index];
@@ -743,6 +744,7 @@
             if (image) {
                 image.parent().parent().find("a,span").removeClass("currently-playing");
                 if (song.streamUrl == currentStreamUrl) {
+                    $("#turntableImage").attr("src", "coverArt.view?id="+song.id);
                     image.css({'display':'inline-block'});
                     image.parent().parent().find("a,span").addClass("currently-playing");
                 } else {
@@ -825,7 +827,7 @@
         </div>
     </c:when>
     <c:otherwise>
-        <div class="bgcolor2" style="position:fixed; bottom:0; width:100%;padding-top:10px;">
+        <div class="bgcolor2" style="position:fixed; bottom:0; width:100%;padding-top:10px;z-index: 1;">
             <table class="play-control-panel" style="white-space:nowrap; margin-bottom:0;">
                 <tr style="white-space:nowrap;">
                     <c:if test="${model.user.settingsRole and fn:length(model.players) gt 1}">
@@ -934,14 +936,12 @@
                       </span>
                     </td>
 
-                    <c:if test="${model.user.settingsRole}">
-                        <td style="white-space:nowrap;" class="play-control-panel__option">
-                          <span class="header">
-                            <a href="playerSettings.view?id=${model.player.id}" target="main" class="player-control">
-                              <img src="<spring:theme code='settingsImage'/>" alt="Settings" title="Settings" style="cursor:pointer; height:18px">
-                            </a>
-                          </span></td>
-                    </c:if>
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
+                      <span class="header">
+                        <a href="playerSettings.view?id=${model.player.id}" target="main" class="player-control">
+                          <img src="<spring:theme code='settingsImage'/>" alt="Settings" title="Settings" style="cursor:pointer; height:18px">
+                        </a>
+                      </span></td>
 
                     <td style="white-space:nowrap;"><select id="moreActions" onchange="actionSelected(this.options[selectedIndex].id)">
                         <option id="top" selected="selected"><fmt:message key="playlist.more"/></option>
@@ -1035,6 +1035,9 @@
         </tr>
     </tbody>
 </table>
+<div class="record-player">
+    <img id="turntableImage" src="icons/darcula/turntable_mat.jpg">
+</div>
 
 <div style="height:3.2em"></div>
 
