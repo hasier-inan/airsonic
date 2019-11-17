@@ -936,13 +936,6 @@
                       </span>
                     </td>
 
-                    <td style="white-space:nowrap;" class="play-control-panel__option">
-                      <span class="header">
-                        <a href="playerSettings.view?id=${model.player.id}" target="main" class="player-control">
-                          <img src="<spring:theme code='settingsImage'/>" alt="Settings" title="Settings" style="cursor:pointer; height:18px">
-                        </a>
-                      </span></td>
-
                     <td style="white-space:nowrap;"><select id="moreActions" onchange="actionSelected(this.options[selectedIndex].id)">
                         <option id="top" selected="selected"><fmt:message key="playlist.more"/></option>
                         <optgroup label="<fmt:message key='playlist.more.playlist'/>">
