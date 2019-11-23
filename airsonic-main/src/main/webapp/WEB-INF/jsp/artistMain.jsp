@@ -1,3 +1,8 @@
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="org.airsonic.player.domain.MediaFile" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="iso-8859-1"%>
 <%--
@@ -250,6 +255,15 @@
     <c:otherwise>
         <div style="float: left;padding-top: 1.5em">
             <c:set var="albumCount" value="0"/>
+            <c:set var="sortedDirs" value="${model.subDirs}"/>
+            <%
+                List<MediaFile> subDirs = (List)pageContext.getAttribute("sortedDirs");
+                Collections.sort(subDirs, new Comparator<MediaFile>() {
+                    public int compare (MediaFile dir1, MediaFile dir2) {
+                        return dir1.getName().compareTo(dir2.getName());
+                    }
+                });
+            %>
             <c:forEach items="${model.subDirs}" var="subDir" varStatus="loopStatus">
                 <c:set var="albumCount" value="${albumCount + 1}"/>
                 <div class="albumThumb">
