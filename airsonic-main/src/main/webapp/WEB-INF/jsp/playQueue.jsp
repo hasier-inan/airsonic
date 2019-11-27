@@ -577,6 +577,7 @@
                 $("#album" + id).text(song.album);
                 $("#album" + id).attr("title", song.album);
                 $("#albumUrl" + id).attr("href", song.albumUrl);
+                $("#artistUrl" + id).attr("href", song.artistUrl);
                 // Open external internet radio links in new windows
                 if (internetRadioEnabled) {
                     $("#albumUrl" + id).attr({
@@ -1005,7 +1006,7 @@
                 <td class="truncate"><a id="albumUrl" target="main"><span id="album" class="detail">Album</span></a></td>
             </c:if>
             <c:if test="${model.visibility.artistVisible}">
-                <td class="truncate"><span id="artist" class="detail">Artist</span></td>
+                <td class="truncate"><a id="artistUrl" target="main"><span id="artist" class="detail">Artist</span></a></td>
             </c:if>
             <c:if test="${model.visibility.genreVisible}">
                 <td class="truncate"><span id="genre" class="detail">Genre</span></td>

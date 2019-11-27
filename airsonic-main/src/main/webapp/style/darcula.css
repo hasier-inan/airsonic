@@ -175,11 +175,11 @@ a:hover, a:hover * {
     cursor: pointer;
 }
 
-.albumThumb .caption2{
+.albumThumb .caption2 a{
     color: #cb463c;
 }
 
-.albumThumb .caption2:hover{
+.albumThumb .caption2 a:hover{
     color: #9e9e9e;
 }
 

@@ -122,6 +122,7 @@ public class PlayQueueInfo {
         private final String fileSize;
         private final boolean starred;
         private final String albumUrl;
+        private final String artistUrl;
         private final String streamUrl;
         private final String remoteStreamUrl;
         private final String coverArtUrl;
@@ -143,6 +144,7 @@ public class PlayQueueInfo {
                 String fileSize,
                 boolean starred,
                 String albumUrl,
+                String artistUrl,
                 String streamUrl,
                 String remoteStreamUrl,
                 String coverArtUrl,
@@ -163,6 +165,7 @@ public class PlayQueueInfo {
             this.fileSize = fileSize;
             this.starred = starred;
             this.albumUrl = albumUrl;
+            this.artistUrl = artistUrl;
             this.streamUrl = streamUrl;
             this.remoteStreamUrl = remoteStreamUrl;
             this.coverArtUrl = coverArtUrl;
@@ -227,6 +230,10 @@ public class PlayQueueInfo {
 
         public String getAlbumUrl() {
             return albumUrl;
+        }
+
+        public String getArtistUrl() {
+            return artistUrl;
         }
 
         public String getStreamUrl() {

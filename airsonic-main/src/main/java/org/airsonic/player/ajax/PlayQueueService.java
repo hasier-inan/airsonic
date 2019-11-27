@@ -696,6 +696,7 @@ public class PlayQueueService {
         for (MediaFile file : playQueue.getFiles()) {
 
             String albumUrl = url + "main.view?id=" + file.getId();
+            String artistUrl = url + "main.view?id=" + getRootArtist(file);
             String streamUrl = url + "stream?player=" + player.getId() + "&id=" + file.getId();
             String coverArtUrl = url + "coverArt.view?id=" + file.getId();
 
@@ -708,11 +709,19 @@ public class PlayQueueService {
             entries.add(new PlayQueueInfo.Entry(file.getId(), file.getTrackNumber(), file.getTitle(), file.getArtist(),
                     file.getAlbumName(), file.getGenre(), file.getYear(), formatBitRate(file),
                     file.getDurationSeconds(), file.getDurationString(), format, formatContentType(format),
-                    formatFileSize(file.getFileSize(), locale), starred, albumUrl, streamUrl, remoteStreamUrl,
+                    formatFileSize(file.getFileSize(), locale), starred, albumUrl, artistUrl, streamUrl, remoteStreamUrl,
                     coverArtUrl, remoteCoverArtUrl));
         }
 
         return entries;
+    }
+
+    private int getRootArtist(MediaFile file) {
+        MediaFile parent = mediaFileService.getParentOf(mediaFileService.getParentOf(file));
+        if (parent != null && !mediaFileService.isRoot(parent)) {
+            return parent.getId();
+        }
+        return getRootArtist(parent);
     }
 
     private List<PlayQueueInfo.Entry> convertInternetRadio(HttpServletRequest request, Player player) {
@@ -744,6 +753,7 @@ public class PlayQueueService {
                     "",                // Content Type
                     "",                // File size
                     false,             // Starred
+                    radioHomepageUrl,  // Album URL (use radio home page URL)
                     radioHomepageUrl,  // Album URL (use radio home page URL)
                     streamUrl,         // Stream URL
                     streamUrl,         // Remote stream URL
