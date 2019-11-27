@@ -239,7 +239,16 @@ public class HomeController  {
         album.setArtist(file.getArtist());
         album.setAlbumTitle(file.getAlbumName());
         album.setCoverArtPath(file.getCoverArtPath());
+        album.setArtistId(getRootArtist(file));
         return album;
+    }
+
+    private int getRootArtist(MediaFile file) {
+        MediaFile parent = mediaFileService.getParentOf(file);
+        if (parent != null && !mediaFileService.isRoot(parent)) {
+            return parent.getId();
+        }
+        return getRootArtist(parent);
     }
 
     /**
@@ -255,6 +264,7 @@ public class HomeController  {
         private Integer playCount;
         private Integer rating;
         private int id;
+        private int artistId;
         private Integer year;
 
         public int getId() {
@@ -335,6 +345,14 @@ public class HomeController  {
 
         public Integer getYear() {
             return year;
+        }
+
+        public int getArtistId() {
+            return artistId;
+        }
+
+        public void setArtistId(int artistId) {
+            this.artistId = artistId;
         }
     }
 }

@@ -96,7 +96,7 @@ PARAMETERS
         <div class="caption1" style="width:${param.coverArtSize - 16}px"><a href="${targetUrl}" title="${param.caption1}">${param.caption1}</a></div>
     </c:if>
     <c:if test="${captionCount gt 1}">
-        <div class="caption2" style="width:${param.coverArtSize - 16}px">${param.caption2}&nbsp;</div>
+        <div class="caption2" style="width:${param.coverArtSize - 16}px"><a href="/main.view?id=${param.artistId}"title="${param.caption2}">${param.caption2}</a></div>
     </c:if>
     <c:if test="${captionCount gt 2}">
         <div class="caption3" style="width:${param.coverArtSize - 16}px">${param.caption3}&nbsp;</div>

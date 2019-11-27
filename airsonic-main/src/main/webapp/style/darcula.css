@@ -175,6 +175,18 @@ a:hover, a:hover * {
     cursor: pointer;
 }
 
+.albumThumb .caption2{
+    color: #cb463c;
+}
+
+.albumThumb .caption2:hover{
+    color: #9e9e9e;
+}
+
+.albumThumb .caption2{
+    color: #cb463c;
+}
+
 .forced-detail{
     display: block !important;
     color: rgba(158, 158, 158, .6);
