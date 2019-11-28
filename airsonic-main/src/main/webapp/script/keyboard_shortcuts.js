@@ -9,6 +9,7 @@ function isKeyboardShortcutsEnabled() {
 
 if (isKeyboardShortcutsEnabled()) {
   Mousetrap.bind('space', function() { parent.frames.playQueue.onToggleStartStop(); return false; });
+  Mousetrap.bind('backspace', function() { window.history.back(); return false; });
   Mousetrap.bind('s', function() { parent.frames.playQueue.onToggleStartStop(); return false; });
   Mousetrap.bind('left',  function() { parent.frames.playQueue.onPrevious(); });
   Mousetrap.bind('a',  function() { parent.frames.playQueue.onPrevious(); });
