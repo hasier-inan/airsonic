@@ -149,7 +149,7 @@ public class MediaFileService {
     public MediaFile getParentOf(MediaFile mediaFile) {
         try{
             return getMediaFile(mediaFile.getParentPath());
-        }catch (SecurityException e){
+        }catch (Exception e){
             //root
         }
        return null;

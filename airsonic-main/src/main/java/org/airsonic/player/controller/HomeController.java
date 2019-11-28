@@ -21,6 +21,8 @@ package org.airsonic.player.controller;
 
 import org.airsonic.player.domain.*;
 import org.airsonic.player.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.*;
 
+import static org.springframework.util.ObjectUtils.isEmpty;
 import static org.springframework.web.bind.ServletRequestUtils.getIntParameter;
 import static org.springframework.web.bind.ServletRequestUtils.getStringParameter;
 
@@ -43,6 +46,8 @@ import static org.springframework.web.bind.ServletRequestUtils.getStringParamete
 @Controller
 @RequestMapping("/home")
 public class HomeController  {
+
+    private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
     private static final int LIST_SIZE = 40;
 
@@ -239,13 +244,21 @@ public class HomeController  {
         album.setArtist(file.getArtist());
         album.setAlbumTitle(file.getAlbumName());
         album.setCoverArtPath(file.getCoverArtPath());
-        album.setArtistId(getRootArtist(file));
+        Integer rootArtist = getRootArtist(file);
+        if(!isEmpty(rootArtist)){
+            album.setArtistId(rootArtist);
+        } else{
+            LOG.warn("Could not extract root artist: "+file.getPath());
+        }
         return album;
     }
 
-    private int getRootArtist(MediaFile file) {
+    private Integer getRootArtist(MediaFile file) {
+        if(isEmpty(file.getPath())){
+            return null;
+        }
         MediaFile parent = mediaFileService.getParentOf(file);
-        if (parent != null && !mediaFileService.isRoot(parent)) {
+        if (parent != null) {
             return parent.getId();
         }
         return getRootArtist(parent);
