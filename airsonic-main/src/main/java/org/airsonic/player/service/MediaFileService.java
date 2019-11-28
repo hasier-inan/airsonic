@@ -147,10 +147,12 @@ public class MediaFileService {
     }
 
     public MediaFile getParentOf(MediaFile mediaFile) {
-        if (mediaFile.getParentPath() == null) {
-            return null;
+        try{
+            return getMediaFile(mediaFile.getParentPath());
+        }catch (SecurityException e){
+            //root
         }
-        return getMediaFile(mediaFile.getParentPath());
+       return null;
     }
 
     private MediaFile checkLastModified(MediaFile mediaFile, boolean useFastCache) {
