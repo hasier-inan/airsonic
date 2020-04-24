@@ -142,7 +142,7 @@
         </c:url>
 
         <div class="albumThumb">
-            <div class="coverart dropshadow" style="width:213px">
+            <div class="coverart" style="width:213px">
                 <div style="position:relative">
                     <div>
                         <a href="${videoUrl}"><img src="${coverArtUrl}" height="120" width="213" alt=""
