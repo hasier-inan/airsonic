@@ -27,66 +27,66 @@
 }
 
 .mejs__time-total {
-    background: rgba(190, 190, 190, 0.7);
+    background: #585858;
 }
 
 .mejs__time-buffering {
-    background: linear-gradient(-45deg, rgba(156, 156, 156, 0.15) 75%, transparent 75%, transparent 50%, rgba(156, 156, 156, 0.85) 50%, rgba(156, 156, 156, 0.85) 75%, transparent 75%, transparent);
+    background: #585858;
 }
 
 .mejs__time-loaded {
-    background: rgba(63, 63, 63, 0.7);
+    background: #585858;
 }
 
 .mejs__time-current, .mejs__time-handle-content {
-    background: rgba(156, 156, 156, 0.5);
+ background: #727272;
 }
 
 .mejs__time-hovered {
-    background: rgba(156, 156, 156, .4);
+ background: #727272;
 }
 
 .mejs__time-hovered.negative {
-    background: rgba(255, 255, 255, 0.4);
+ background: #585858;
 }
 
 .mejs__volume-button > .mejs__volume-slider {
-    background: rgba(156, 156, 156, 0.3);
+ background: rgba(156, 156, 156, 0.3);
 }
 
 .mejs__volume-current {
-    background: rgba(156, 156, 156, 0.3);
+ background: rgba(156, 156, 156, 0.3);
 }
 
 .mejs__volume-handle {
-    background: rgba(156, 156, 156, 0.3);
+ background: rgba(156, 156, 156, 0.3);
 }
 
 .mejs__horizontal-volume-total {
-    background: rgba(180, 180, 180, 0.4);
+ background: rgba(180, 180, 180, 0.4);
 }
 
 .mejs__horizontal-volume-current {
-    background: rgba(156, 156, 156, 0.4);
+ background: rgba(156, 156, 156, 0.4);
 }
 
 .mejs__captions-button > .mejs__captions-selector, .mejs__chapters-button > .mejs__chapters-selector {
-    background: rgba(50, 50, 50, 0.5);
+ background: rgba(50, 50, 50, 0.5);
 }
 
 .mejs__captions-selector-list-item, .mejs__chapters-selector-list-item {
-    color: #000;
+ color: #000;
 }
 
 .mejs__captions-selector-list-item:hover, .mejs__chapters-selector-list-item:hover {
-    background-color: rgb(100, 100, 100) !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
+ background-color: rgb(100, 100, 100) !important;
+ background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .mejs__captions-layer {
-    color: #000;
+ color: #000;
 }
 
 .mejs__captions-layer a {
-    color: #000;
+ color: #000;
 }

@@ -49,7 +49,7 @@ public class HomeController  {
 
     private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
-    private static final int LIST_SIZE = 40;
+    private static final int LIST_SIZE = 54;
 
     @Autowired
     private SettingsService settingsService;
