@@ -11,9 +11,9 @@ if (isKeyboardShortcutsEnabled()) {
   Mousetrap.bind('space', function() { parent.frames.playQueue.onToggleStartStop(); return false; });
   Mousetrap.bind('backspace', function() { window.history.back(); return false; });
   Mousetrap.bind('s', function() { parent.frames.playQueue.onToggleStartStop(); return false; });
-  Mousetrap.bind('left',  function() { parent.frames.playQueue.onPrevious(); });
+  Mousetrap.bind('left',  function() { parent.frames.playQueue.onFastBackward(); });
   Mousetrap.bind('a',  function() { parent.frames.playQueue.onPrevious(); });
-  Mousetrap.bind('right', function() { parent.frames.playQueue.onNext(); });
+  Mousetrap.bind('right', function() { parent.frames.playQueue.onFastForward(); });
   Mousetrap.bind('d', function() { parent.frames.playQueue.onNext(); });
   Mousetrap.bind('*',     function() { parent.frames.playQueue.onStarCurrent(); });
   Mousetrap.bind('plus',  function() { parent.frames.playQueue.onGainAdd(+5); });

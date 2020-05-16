@@ -338,6 +338,15 @@
         }
         onSkip(index);
     }
+
+    function onFastForward(){
+        $('#audioPlayer').get(0).currentTime+=5;
+    }
+
+    function onFastBackward(){
+        $('#audioPlayer').get(0).currentTime-=5;
+    }
+
     function onPrevious() {
         onSkip(parseInt(getCurrentSongIndex()) - 1);
     }
