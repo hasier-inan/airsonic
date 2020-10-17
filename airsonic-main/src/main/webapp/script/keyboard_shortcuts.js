@@ -17,6 +17,7 @@ if (isKeyboardShortcutsEnabled()) {
   Mousetrap.bind('d', function() { parent.frames.playQueue.onNext(); });
   Mousetrap.bind('*',     function() { parent.frames.playQueue.onStarCurrent(); });
   Mousetrap.bind('plus',  function() { parent.frames.playQueue.onGainAdd(+5); });
+  Mousetrap.bind('del',  function() { parent.frames.playQueue.onClear(); });
   Mousetrap.bind('r',  function() { parent.frames.playQueue.onGainAdd(+5); });
   Mousetrap.bind('-',     function() { parent.frames.playQueue.onGainAdd(-5); });
   Mousetrap.bind('f',     function() { parent.frames.playQueue.onGainAdd(-5); });

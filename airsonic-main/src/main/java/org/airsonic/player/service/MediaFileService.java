@@ -19,7 +19,6 @@
  */
 package org.airsonic.player.service;
 
-import javafx.util.Pair;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 import org.airsonic.player.dao.AlbumDao;
@@ -40,6 +39,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.regex.Pattern;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
@@ -618,7 +618,7 @@ public class MediaFileService {
      * Finds a cover art image for the given directory, by looking for it on the disk.
      */
     private File findCoverArt(File[] candidates) {
-        Pair<File, Boolean> imageFoundPair = null;
+        SimpleEntry<File, Boolean> imageFoundPair = null;
         for (File candidate : candidates) {
             if (candidate.isFile() && !candidate.getName().startsWith(".")) {
                 imageFoundPair = findCoverArtCandidate(candidate);
@@ -644,17 +644,17 @@ public class MediaFileService {
         return null;
     }
 
-    private Pair findCoverArtCandidate(File candidate) {
+    private SimpleEntry findCoverArtCandidate(File candidate) {
         File imageFound = null;
         for (String imageFileType : settingsService.getCoverArtFileTypesAsArray()) {
             if(candidate.getName().toUpperCase().endsWith(imageFileType.toUpperCase())){
                 imageFound = candidate;
                 if(matchesCoverName(candidate.getName())){
-                    return new Pair<>(candidate, true);
+                    return new SimpleEntry<>(candidate, true);
                 }
             }
         }
-        return new Pair<>(imageFound, false);
+        return new SimpleEntry<>(imageFound, false);
     }
 
     /**
