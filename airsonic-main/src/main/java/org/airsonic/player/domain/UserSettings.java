@@ -207,7 +207,8 @@ public class UserSettings {
     }
 
     public boolean isAutoHidePlayQueue() {
-        return autoHidePlayQueue;
+        //override settings, no auto hide.
+        return false;
     }
 
     public void setAutoHidePlayQueue(boolean autoHidePlayQueue) {

@@ -26,9 +26,9 @@
     </style>
 </head>
 
-<body class="bgcolor2 playlistframe" onload="init()">
+<body class="bgcolor2 playlistframe" onload="init()" style="overflow:hidden;">
 
-<span id="dummy-animation-target" style="max-width: ${model.autoHide ? 50 : 150}px; display: none"></span>
+<span id="dummy-animation-target-pq" style="max-width: ${model.autoHide ? 50 : 150}px; display: none"></span>
 
 <script type="text/javascript" language="javascript">
 
@@ -50,8 +50,7 @@
     // Is the "internet radio" playing?
     var internetRadioEnabled = false;
 
-    // Is the play queue visible? (Initially hidden if set to "auto-hide" in the settings)
-    var isVisible = ${model.autoHide ? 'false' : 'true'};
+    var isVisible = false;
 
     // Initialize the Cast player (ChromeCast support)
     var CastPlayer = new CastPlayer();
@@ -134,11 +133,15 @@
         };
 
         getPlayQueue();
+        onHidePlayQueue();
     }
 
     function onHidePlayQueue() {
       setFrameHeight(50);
       isVisible = false;
+      $("#dummy-animation-target-pq").parent().css('overflow', 'hidden');
+      $(".playlist-is-down").show();
+      $(".playlist-is-up").hide();
     }
 
     function onShowPlayQueue() {
@@ -146,6 +149,9 @@
       height = Math.min(height, window.top.innerHeight * 0.8);
       setFrameHeight(height);
       isVisible = true;
+      $("#dummy-animation-target-pq").parent().css('overflow', 'auto');
+        $(".playlist-is-down").hide();
+        $(".playlist-is-up").show();
     }
 
     function onTogglePlayQueue() {
@@ -167,8 +173,8 @@
         <%-- Disable animation in Chrome. It stopped working in Chrome 44. --%>
         var duration = navigator.userAgent.indexOf("Chrome") != -1 ? 0 : 400;
 
-        $("#dummy-animation-target").stop();
-        $("#dummy-animation-target").animate({"max-width": height}, {
+        $("#dummy-animation-target-pq").stop();
+        $("#dummy-animation-target-pq").animate({"max-width": height}, {
             step: function (now, fx) {
                 top.document.getElementById("playQueueFrameset").rows = "*," + now;
             },
@@ -942,6 +948,15 @@
                       <span class="header">
                         <a href="javascript:onUndo()" id="undoQueue" class="player-control">
                           <img src="<spring:theme code='undoImage'/>" alt="Undo" title="Undo" style="cursor:pointer; height:18px">
+                        </a>
+                      </span>
+                    </td>
+
+                    <td style="white-space:nowrap;" class="play-control-panel__option">
+                      <span class="header">
+                        <a href="javascript:onTogglePlayQueue()" id="showPlaylist" class="player-control">
+                            <img src="<spring:theme code='viewAsListImageOn'/>" class="playlist-is-down" alt="Playlist" title="Playlist" style="cursor:pointer; height:18px">
+                            <img src="<spring:theme code='viewAsListImage'/>" class="playlist-is-up" alt="Playlist" title="Playlist" style="cursor:pointer; height:18px;display:none">
                         </a>
                       </span>
                     </td>
