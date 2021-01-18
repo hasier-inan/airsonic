@@ -23,3 +23,4 @@
 </script>
 <script defer type="text/javascript" src="<c:url value='/script/mousetrap-1.6.0.js'/>"></script>
 <script defer type="text/javascript" src="<c:url value='/script/keyboard_shortcuts.js'/>"></script>
+<script defer type="text/javascript" src="<c:url value='/script/windowListener.js'/>"></script>

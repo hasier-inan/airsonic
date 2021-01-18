@@ -26,7 +26,7 @@
     </style>
 </head>
 
-<body class="bgcolor2 playlistframe" onload="init()" style="overflow:hidden;">
+<body class="bgcolor2 playlistframe playlist-keeper" onload="init()" style="overflow:hidden;">
 
 <span id="dummy-animation-target-pq" style="max-width: ${model.autoHide ? 50 : 150}px; display: none"></span>
 
